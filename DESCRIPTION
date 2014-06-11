@@ -1,0 +1,15 @@
+Package: 2014_JSM_bootSVD_demo
+Title: JSM Demo for bootSvd
+Description: Fast Bootstrap Eigenface Standard Error Demo
+Version: 0.1
+Author: Aaron Fisher <fisher@jhu.edu>
+Maintainer: Aaron Fisher <fisher@jhu.edu>
+Depends:
+    R (>= 3.0.2)
+Imports:
+    bootSVD,
+    plotrix,
+    colorspace,
+    ajfisher
+License: GPL-2
+LazyData: true
