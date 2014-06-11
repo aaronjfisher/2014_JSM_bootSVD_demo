@@ -8,7 +8,7 @@ This package demonstrates the R package bootSVD (Fisher et al., 2014), using the
 
 The package is currently only meant to be used in demonstrations during talks. The only function available is `ex_faces`. More customizable examples can be built off of the bootSVD package directly.
 
-To install:
+To install and run:
 ```S
 ## if needed
 install.packages("devtools")
@@ -26,7 +26,10 @@ ex_faces(showFaceEx=TRUE)
 
 With standard methods these bootstrap standard errors would require at least 15.7 minutes (see code below). With bootSVD however, exact results are available in approximately 15 seconds.
 
+Approximate timing for the standard bootstrap PCA procedure:
 ```S
+library(bootSVD)
+library(bootSvdDemoJSM2014)
 # center data matrix before doing PCA
 Y<-scale(t(faces_mat),scale=FALSE,center=TRUE) 
 # Run standard PCA 10 times, then multiply computation time by 100
