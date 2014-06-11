@@ -1,4 +1,4 @@
-bootSvdJSMdemo
+2014 JSM bootSVD package demonstration
 =======
 
 This package demonstrates the R package bootSVD (Fisher et al., 2014), using the "Stirling" face dataset, available here:
@@ -20,7 +20,7 @@ install_github('ajfisher','aaronjfisher')
 install_github('2014_JSM_bootSVD_demo','aaronjfisher')
 
 ## run bootstrap PCA on face dataset
-library(bootSvdJSMdemo)
+library(bootSvdDemoJSM2014)
 ex_faces()
 ``` 
 
