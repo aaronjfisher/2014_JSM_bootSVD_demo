@@ -21,7 +21,7 @@ install_github('2014_JSM_bootSVD_demo','aaronjfisher')
 
 ## run bootstrap PCA on face dataset
 library(bootSvdDemoJSM2014)
-ex_faces()
+ex_faces(showFaceEx=TRUE)
 ``` 
 
 With standard methods these bootstrap standard errors would require at least 15.7 minutes (see code below). With bootSVD however, exact results are available in approximately 15 seconds.
