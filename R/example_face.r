@@ -90,7 +90,9 @@ ex_faces<-function(K=3,showFaceEx=FALSE){
 
 	set.seed(0)
 	timer['bootstrap_PCA']<-system.time({
+		suppressWarnings({#bootSVD will warn that p is especially large, but in this case the memory requirements are still fine. For the purposes of a speed talk, I will suppress this warning
 		b<-bootSVD(V=svdYt$v,d=svdYt$d,U=svdYt$u,B=1000,K=K,output=c('HD_moments'))
+	})
 	})['elapsed']
 
 	if(showFaceEx) disp()
