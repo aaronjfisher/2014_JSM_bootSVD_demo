@@ -2,7 +2,7 @@
 \alias{ex_faces}
 \title{Run eigenface bootstrap standard error example}
 \usage{
-ex_faces(K = 3, showFaceEx = FALSE)
+ex_faces(K = 3, showFaceEx = FALSE, talk = TRUE)
 }
 \arguments{
   \item{K}{number of components to compute standard errors

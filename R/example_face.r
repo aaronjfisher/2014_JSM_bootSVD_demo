@@ -47,8 +47,13 @@ NULL
 #'
 #' @examples
 #' ex_faces()
-ex_faces<-function(K=3,showFaceEx=FALSE){
+ex_faces<-function(K=3,showFaceEx=FALSE,talk=TRUE){
 
+
+	show_progress<-function(text){
+		if(talk)
+			cat(text)
+	}
 
 	n<-dim(faces_mat)[2]
 	colPC<-rev(diverge_hcl(100))
@@ -59,17 +64,17 @@ ex_faces<-function(K=3,showFaceEx=FALSE){
 	get2dFace<-function(vec) array(vec,dim=faces_dim)
 
 
-	cat(paste0('Sample data matrix dimensions: ',dim(faces_mat)[1],' by ',dim(faces_mat)[2],'\n')) #p=92036
+	show_progress(paste0('Sample data matrix dimensions: ',dim(faces_mat)[1],' by ',dim(faces_mat)[2],'\n')) #p=92036
 
 	Y<-t(scale(t(faces_mat),scale=FALSE,center=TRUE))
 
 	#image0(get2dFace(-Y[,22]),col=colPC) #demeaned image
 
 
-	# some representative face indeces: 10:12 61:66 74:75 79:81
+	# some other representative face indeces: 10:12 61:66 74:75 79:81
 	if(showFaceEx){
-		par(mfrow=c(2,3),mar=c(2,2,2,.4),oma=c(0,0,3,0))
-		for(face in c(10:12,61:63)) image0(get2dFace(1-faces_mat[,face]),col=colBW)
+		par(mfrow=c(2,3),mar=c(2,2,2,.4),oma=c(0,0,0,0))
+		for(face in c(43:45,98:100)) image0(get2dFace(1-faces_mat[,face]),col=colBW)
 		mtext('Six example faces from the dataset',outer=TRUE,side=3,font=4,line=.8)
 	}
 
@@ -84,14 +89,14 @@ ex_faces<-function(K=3,showFaceEx=FALSE){
 	timer['initial_svd']<-system.time({
 		svdYt<-fastSVD(t(Y))
 	})['elapsed']
-	cat('\nGot initial SVD\nCalculating low dimensional bootstrap PC distribution\n')
+	show_progress('\nGot initial SVD\nCalculating low dimensional bootstrap PC distribution\n')
 
 	#plot(svdYt$d[1:20]^2)
 
 	set.seed(0)
 	timer['bootstrap_PCA']<-system.time({
 		suppressWarnings({#bootSVD will warn that p is especially large, but in this case the memory requirements are still fine. For the purposes of a speed talk, I will suppress this warning
-		b<-bootSVD(V=svdYt$v,d=svdYt$d,U=svdYt$u,B=1000,K=K,output=c('HD_moments'))
+		b<-bootSVD(V=svdYt$v,d=svdYt$d,U=svdYt$u,B=1000,K=K,output=c('HD_moments'),talk=talk)
 	})
 	})['elapsed']
 
