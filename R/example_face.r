@@ -73,7 +73,7 @@ ex_faces<-function(K=3,showFaceEx=FALSE,talk=TRUE){
 
 	# some other representative face indeces: 10:12 61:66 74:75 79:81
 	if(showFaceEx){
-		par(mfrow=c(2,3),mar=c(2,2,2,.4),oma=c(0,0,0,0))
+		par(mfrow=c(2,3),mar=c(2,2,2,.4),oma=c(0,0,3,0))
 		for(face in c(43:45,98:100)) image0(get2dFace(1-faces_mat[,face]),col=colBW)
 		mtext('Six example faces from the dataset',outer=TRUE,side=3,font=4,line=.8)
 	}
