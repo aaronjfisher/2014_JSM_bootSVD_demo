@@ -15,9 +15,10 @@ install.packages("devtools")
 
 ## main package
 library(devtools)
-install_github('bootSVD','aaronjfisher')
-install_github('ajfisher','aaronjfisher')
-install_github('2014_JSM_bootSVD_demo','aaronjfisher')
+install_github('aaronjfisher/bootSVD')
+install_github('aaronjfisher/ajfisher')
+install_github('aaronjfisher/2014_JSM_bootSVD_demo')
+
 
 ## run bootstrap PCA on face dataset
 library(bootSVD2014JSMdemo) #note, repo name and package name are not the same
